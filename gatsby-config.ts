@@ -1,9 +1,10 @@
-/*******************************************************************************
- *                                                                             *
- * Gatsby framework configuration.                                             *
- *                                                                             *
- ******************************************************************************/
-import type { GatsbyConfig } from 'gatsby';
+/***********************************
+ *                                 *
+ * Gatsby framework configuration. *
+ *                                 *
+ ***********************************/
+
+import type { GatsbyConfig } from "gatsby"
 
 const config: GatsbyConfig = {
 	siteMetadata: {
@@ -17,15 +18,15 @@ const config: GatsbyConfig = {
 	plugins: [
 		`gatsby-plugin-mdx`,
 		{
-			resolve: 'gatsby-source-filesystem',
+			resolve: "gatsby-source-filesystem",
 			options: {
-				name: 'pages',
-				path: './src/pages/',
+				name: "pages",
+				path: "./src/pages/",
 			},
-			__key: 'pages',
+			__key: "pages",
 		},
-		'gatsby-plugin-postcss',
+		"gatsby-plugin-postcss",
 	],
-};
+}
 
-export default config;
+export default config

@@ -1,12 +1,12 @@
-/*******************************************************************************
-*                                                                              *
-* 404.                                                                         *
-*                                                                              *
-*******************************************************************************/
+/*******
+*      *
+* 404. *
+*      *
+********/
+
 import * as React from "react"
 import { Link, HeadFC } from "gatsby"
 import '../styles/global.css'
-
 
 
 const NotFoundPage = () => {
@@ -22,7 +22,7 @@ const NotFoundPage = () => {
     </main>
   )
 };
-
+//
 export default NotFoundPage;
 
 export const Head: HeadFC = () => <title>Not found</title>

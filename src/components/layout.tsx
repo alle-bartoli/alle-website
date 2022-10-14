@@ -1,11 +1,11 @@
-/*******************************************************************************
-*                                                                              *
-* Layout Component.                                                            *
-*                                                                              *
-*******************************************************************************/
+/********************
+*                   *
+* Layout Component. *
+*                   *
+*********************/
+
 import React from 'react';
 import '../styles/global.css'
-
 
 
 // Define props type.
@@ -15,11 +15,10 @@ type LayoutProps = {
 };
 
 
-
-export const Layout: React.FC<LayoutProps> = ( { children,  fullWidth = false}) => {
-    return(
-        <div 
-            className={`
+export const Layout: React.FC<LayoutProps> = ({ children, fullWidth = false }) => {
+    return (
+        <div
+            className={ `
                 ${fullWidth ? 'w-full' : 'max-w-[1000px]'} 
                 flex-col justify-items-center items-center
                 text-xs sm:text-base md:text-xl lg:text-2xl
@@ -27,12 +26,12 @@ export const Layout: React.FC<LayoutProps> = ( { children,  fullWidth = false}) 
                 mx-auto 
             `}
         >
-            
+
             <main>{ children }</main>
 
             <footer className='flex-none absolute text-center bottom-0 py-10'>
-                © {new Date().getFullYear()}, Alessandro Bartoli
+                © { new Date().getFullYear() }, Alessandro Bartoli
             </footer>
         </div>
-    ) 
+    )
 };
