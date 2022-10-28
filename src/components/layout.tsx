@@ -29,7 +29,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, fullWidth = false }) =
 
             <main>{ children }</main>
 
-            <footer className='flex-none absolute text-center bottom-0 py-10'>
+            <footer className='flex-none absolute text-center bottom-4'>
                 © { new Date().getFullYear() }, Alessandro Bartoli
             </footer>
         </div>
