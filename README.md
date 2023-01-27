@@ -9,7 +9,7 @@ The simple solution for this is to use [gatsby-plugin-ipfs](https://github.com/m
 
 ## Verify on IPFS
 
-[IPFS](https://ipfs.fleek.co/ipfs/QmUKgHdLGfFM6Bsst585q4w87FcvPdsyfWKjT73MKYAhoP/)
+[IPFS](https://fleek.ipfs.io/ipfs/QmQnfeRAsH1rBQMF9fmyXBsXBQpJU23WypYEcB2ii1mrwM/)
 
 ## 🏷️ Tags
 
