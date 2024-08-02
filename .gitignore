@@ -1,4 +1,9 @@
+# Modules
 node_modules/
-.cache/
-public
-src/gatsby-types.d.ts
+
+# NextJS
+.next/
+out/
+
+# Macos/AppleSilicon
+.DS_Store

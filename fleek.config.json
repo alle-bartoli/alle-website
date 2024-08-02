@@ -1,0 +1,10 @@
+{
+  "sites": [
+    {
+      "slug": "alle-website",
+      "distDir": "out",
+      "buildCommand": "yarn run build"
+    }
+  ]
+}
+
