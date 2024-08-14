@@ -6,10 +6,54 @@ import { cn } from "@/utils";
 // Configure font.
 const jbMono = JetBrains_Mono({ subsets: ["latin"] });
 
-// Website metadata (SEO).
+/**
+ * @dev Home page metadata.
+ */
 export const metadata: Metadata = {
-  title: "Alessandro Bartoli",
-  description: "Alessandro Bartoli personal website",
+  applicationName: "Alessandro Bartoli personal website",
+  title: {
+    default: "Alessandro Bartoli | Dev",
+    template: "%s | Alessandro Bartoli",
+  },
+  description: "Alessandro Bartoli personal website.",
+  keywords: [
+    "Sviluppatori italiani",
+    "Software",
+    "Software Modena",
+    "Development",
+    "Sviluppo software",
+    "Typescript",
+    "Javascript",
+    "Rust",
+    "Delphi",
+    "Cloud architecture",
+    "Developer architect",
+    "Software engineering",
+    "Full Stack developer",
+    "Frontend developer",
+    "Backend developer",
+    "Blockchain",
+    "Web3",
+  ],
+  authors: [
+    { name: "Alessia Morellini", url: "https://alessia-morellini.com" },
+    { name: "Alessandro Bartoli", url: "https://alessandrobartoli.dev" },
+  ],
+  creator: "Alessandro Bartoli",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://www.alessandrobartoli.dev",
+    siteName: "Alessandro Bartoli personal website",
+    //images: [
+    // {
+    //  url: "/path/to/default-og-image.jpg", // TODO: Replace with your image path.
+    // width: 800,
+    // height: 600,
+    // alt: "Alessandro Bartoli",
+    // },
+    //],
+  },
 };
 
 /**
