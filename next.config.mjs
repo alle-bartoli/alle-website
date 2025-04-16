@@ -7,6 +7,7 @@ const withMDXConfig = withMDX({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+   output: "export",
    pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"], // Configure pageExtensions to include MDX files
    reactStrictMode: true,
    images: { unoptimized: true },

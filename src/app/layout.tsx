@@ -3,9 +3,6 @@ import { JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 import { cn } from "@/utils"
 
-// Runs on the edge
-export const runtime = "edge"
-
 // Configure font.
 const jbMono = JetBrains_Mono({ subsets: ["latin"] })
 
