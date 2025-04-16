@@ -1,9 +1,10 @@
 /**
- * @description ClassNames optimizer composer.
+ * ClassNames optimizer composer.
+ *
  * @function cn
  * @param {string[]} classes
- * @returns string
+ * @returns {string}
  */
 export function cn(...classes: string[]): string {
-  return classes.filter(Boolean).join(" ");
+   return classes.filter(Boolean).join(" ")
 }
