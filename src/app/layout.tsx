@@ -6,9 +6,7 @@ import { cn } from "@/utils"
 // Configure font.
 const jbMono = JetBrains_Mono({ subsets: ["latin"] })
 
-/**
- * @dev Home page metadata.
- */
+// Home page metadata
 export const metadata: Metadata = {
    applicationName: "Alessandro Bartoli personal website",
    title: {
