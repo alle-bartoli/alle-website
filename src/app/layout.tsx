@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 import { JetBrains_Mono } from "next/font/google"
-import "./globals.css"
 import { cn } from "@/utils"
+import "./globals.css"
 
-// Configure font.
+// Configure font
 const jbMono = JetBrains_Mono({ subsets: ["latin"] })
 
 // Home page metadata
@@ -51,31 +51,28 @@ export const metadata: Metadata = {
    },
 }
 
-//  RootLayout props
-interface IProps {
-   children?: React.ReactNode
-}
-
 /**
- * @function RootLayout
- * @param {IProps} props
+ * Root Layout.
+ *
+ * @param {React.ReactNode} [props.children]
  * @returns {React.JSX.Element}
  */
-export default function RootLayout(props: IProps): React.JSX.Element {
+export default function RootLayout({ children }: { children?: React.ReactNode }): React.JSX.Element {
    return (
       <html lang="en">
-         <body className={jbMono.className}>
+         <body className={cn(jbMono.className, "text-slate-200 bg-zinc-800", "min-h-screen flex flex-col")}>
             <div
                className={cn(
-                  "max-w-[1000px]",
-                  "flex-col justify-center items-center",
-                  "text-xs sm:text-base md:text-xl lg:text-2xl",
-                  "p-10 sm:p-10 md:p-16 lg:p-20",
                   "mx-auto",
+                  "max-w-[1000px]",
+                  "flex-1 flex flex-col",
+                  "p-10 sm:p-10 md:p-16 lg:p-20",
+                  "text-xs sm:text-base md:text-xl lg:text-2xl",
+                  "prose prose-invert",
                )}
             >
-               <main>{props.children}</main>
-               <footer className="flex-none absolute text-center bottom-4">
+               <main>{children}</main>
+               <footer className="mt-auto text-center text-xs sm:text-sm md:text-base pt-10">
                   © {new Date().getFullYear()}, Alessandro Bartoli
                </footer>
             </div>

@@ -1,14 +1,14 @@
+import { NextConfig } from "next"
 import withMDX from "@next/mdx"
 
 // Configure MDX with options
 const withMDXConfig = withMDX({
-   extension: /\.mdx?$/,
+   extension: /\.(md|mdx)$/,
 })
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
    output: "export",
-   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"], // Configure pageExtensions to include MDX files
+   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"], // Configure pageExtensions to include MDX files
    reactStrictMode: true,
    images: { unoptimized: true },
    trailingSlash: true,
@@ -16,7 +16,7 @@ const nextConfig = {
    // Add webpack configuration for SVG handling
    webpack(config) {
       // Grab the existing rule that handles SVG imports
-      const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.(".svg"))
+      const fileLoaderRule = config.module.rules.find((rule: any) => rule.test?.test?.(".svg"))
 
       config.module.rules.push(
          // Reapply the existing rule, but only for svg imports ending in ?url

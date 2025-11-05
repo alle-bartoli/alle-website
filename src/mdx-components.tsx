@@ -1,12 +1,10 @@
 import type { MDXComponents } from "mdx/types"
 
-/**
- * @function useMDXComponents
- * @param {MDXComponents} components
- * @returns {MDXComponents}
- */
-export function useMDXComponents(components: MDXComponents): MDXComponents {
-   return {
-      ...components,
-   }
+// Override components
+const components: MDXComponents = {
+   a: ({ children }) => <a className="text-green-400 hover:text-green-200">{children}</a>,
+}
+
+export function useMDXComponents(): MDXComponents {
+   return components
 }
