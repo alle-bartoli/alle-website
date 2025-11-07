@@ -10,3 +10,6 @@ out/
 
 # out
 .vercel
+
+# Open NEXT
+.open-next
