@@ -42,9 +42,3 @@ const nextConfig: NextConfig = {
 }
 
 export default withMDXConfig(nextConfig)
-
-/**
- * @see https://opennext.js.org/cloudflare/get-started#12-develop-locally
- */
-import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare"
-initOpenNextCloudflareForDev()

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next"
 
-const host = process.env.WEBSITE_URL!
+export const dynamic = "force-static"
 
 /**
  * Generate robots.txt
@@ -15,6 +15,6 @@ export default function robots(): MetadataRoute.Robots {
          allow: "/",
          disallow: [],
       },
-      sitemap: `${host}/sitemap.xml`,
+      sitemap: `${process.env.WEBSITE_URL!}/sitemap.xml`,
    }
 }

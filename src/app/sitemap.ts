@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next"
 
-const host = process.env.WEBSITE_URL!
+export const dynamic = "force-static"
 
 /**
  * Generate sitemap.xml
@@ -11,7 +11,7 @@ const host = process.env.WEBSITE_URL!
 export default function sitemap(): MetadataRoute.Sitemap {
    return [
       {
-         url: host,
+         url: process.env.WEBSITE_URL!,
          lastModified: new Date(),
          changeFrequency: "yearly",
          priority: 1,
