@@ -60,19 +60,30 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children?: React.ReactNode }): React.JSX.Element {
    return (
       <html lang="en">
-         <body className={cn(jbMono.className, "text-slate-200 bg-zinc-800", "min-h-screen flex flex-col")}>
+         <body
+            className={cn(
+               jbMono.className,
+               "bg-zinc-900 text-zinc-100 selection:bg-slate-500 selection:text-white",
+               "flex flex-col min-h-screen",
+            )}
+         >
             <div
                className={cn(
-                  "mx-auto",
+                  "mx-auto flex-1 flex flex-col justify-center",
                   "max-w-[1000px]",
-                  "flex-1 flex flex-col",
-                  "p-10 sm:p-10 md:p-16 lg:p-20",
-                  "text-xs sm:text-base md:text-xl lg:text-2xl",
+                  "p-8 sm:p-10 md:p-16 lg:p-20",
+                  "text-sm sm:text-base md:text-lg lg:text-xl",
                   "prose prose-invert",
                )}
             >
+               <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                     background: "radial-gradient(circle at top, rgba(255,255,255,0.15) 0%, transparent 70%)",
+                  }}
+               />
                <main>{children}</main>
-               <footer className="mt-auto text-center text-xs sm:text-sm md:text-base pt-10">
+               <footer className="text-center text-xs sm:text-sm md:text-base pt-10 mt-auto opacity-60">
                   © {new Date().getFullYear()}, Alessandro Bartoli
                </footer>
             </div>

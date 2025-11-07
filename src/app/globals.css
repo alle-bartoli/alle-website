@@ -20,5 +20,10 @@
    /* Override prose-invert `marker` color */
    .prose-invert ul > li::marker {
       color: theme("colors.slate.300") !important;
+      cursor: pointer;
+   }
+
+   .prose-invert ul > li {
+      cursor: pointer;
    }
 }
