@@ -6,6 +6,8 @@ import "./globals.css"
 // Configure font
 const jbMono = JetBrains_Mono({ subsets: ["latin"] })
 
+const url = process.env.WEBSITE_URL!
+
 // Home page metadata
 export const metadata: Metadata = {
    applicationName: "Alessandro Bartoli personal website",
@@ -15,31 +17,93 @@ export const metadata: Metadata = {
    },
    description: "Alessandro Bartoli personal website.",
    keywords: [
-      "Sviluppatori italiani",
-      "Software",
-      "Software Modena",
-      "Development",
-      "Sviluppo software",
-      "Typescript",
-      "Javascript",
+      // Identity
+      "Alessandro Bartoli",
+      "Sviluppatore Carpi",
+      "Sviluppatore Modena",
+      "Sviluppatore Emilia-Romagna",
+      "Consulente informatico Carpi",
+      "Consulente informatico Modena",
+      "Consulente informatico Emilia-Romagna",
+      "Consulente software Carpi",
+      "Consulente software Modena",
+      "Full Stack Developer Carpi",
+      "Full Stack Developer Modena",
+      "Full Stack Developer Emilia-Romagna",
+      "Sviluppo software Carpi",
+      "Sviluppo software Modena",
+      "Sviluppo software Emilia-Romagna",
+
+      // Prof
+      "Full Stack Developer",
+      "AI Developer",
+      "Cloud Architect",
+      "Software Architect",
+      "DevOps Engineer",
+      "Cloud-native development",
+      "Serverless applications",
+      "Event-driven architecture",
+      "API design",
+      "Database",
+      "Sviluppo web moderno",
+
+      // Tech
+      "TypeScript",
+      "JavaScript",
+      "React",
+      "Next.js",
+      "Go",
       "Rust",
+      "Python",
       "Delphi",
-      "Cloud architecture",
-      "Developer architect",
-      "Software engineering",
-      "Full Stack developer",
-      "Frontend developer",
-      "Backend developer",
+      "AWS",
+      "Automation",
+      "Serverless",
+      "Cloud computing",
+      "Cloud-native development",
+      "DevOps automation",
+      "Event-driven systems",
+      "API orchestration",
+      "SQL",
+      "NoSQL",
+
+      // Emerging tech
+      "Artificial Intelligence",
+      "AI Agents",
+      "Agent AI",
+      "OpenAI",
+      "Anthropic",
+      "Perplexity",
+      "Machine Learning",
+      "LLM integration",
+      "AI automation",
+      "Intelligenza Artificiale",
+      "Sviluppo AI",
+      "Sviluppo sistemi intelligenti",
+
+      // Blockchain & web3
       "Blockchain",
       "Web3",
+      "Smart contracts",
+
+      // Intent search
+      "Sviluppatore software",
+      "Consulente software",
+      "Software engineer",
+      "Software consultant",
+      "Architettura cloud",
+      "Sviluppo applicazioni web",
+      "Ingegneria del software",
+      "Esperto AWS",
+      "Sviluppatore full stack Italia",
    ],
-   authors: [{ name: "Alessandro Bartoli", url: "https://alessandrobartoli.dev" }],
+   authors: [{ name: "Alessandro Bartoli", url }],
    creator: "Alessandro Bartoli",
    openGraph: {
       type: "website",
       locale: "en_US",
-      url: "https://www.alessandrobartoli.dev",
       siteName: "Alessandro Bartoli personal website",
+      url,
       //images: [
       // {
       //  url: "/path/to/default-og-image.jpg", // TODO: Replace with your image path.

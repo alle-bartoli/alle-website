@@ -1,6 +1,9 @@
 # Modules
 node_modules/
 
+# Environment
+.env.*
+
 # NextJS
 .next/
 out/
@@ -13,3 +16,4 @@ out/
 
 # Open NEXT
 .open-next
+
