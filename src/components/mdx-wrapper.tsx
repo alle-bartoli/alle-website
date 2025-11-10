@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { MDXComponents } from "mdx/types"
 import { TypingText } from "@/components/typing-text"
 import { cn } from "@/utils"
@@ -8,13 +8,14 @@ import { cn } from "@/utils"
 const PAUSES = {
    h1: 100,
    h3: 26,
-   ul: 6,
+   ul: 12,
    p: 6,
 }
 
 /*
  * Sequential timing.
- * Ensures elements appear sequentially, respecting startDelay per element
+ * Ensures elements appear sequentially,
+ * respecting startDelay per element
  */
 function DelayedReveal({
    startDelay,
@@ -25,16 +26,18 @@ function DelayedReveal({
 }) {
    const [started, setStarted] = useState(false)
 
-   React.useEffect(() => {
+   useEffect(() => {
       const t = window.setTimeout(() => setStarted(true), Math.max(0, startDelay))
       return () => clearTimeout(t)
    }, [startDelay])
 
-   return <>{children(started)}</>
+   return <>{children(started)}</> // It passes that flag to the children render function so the child knows when to show itself
 }
 
-/*
- * Timing helpers
+/**
+ * This maintains a global timeline for all elements.
+ * Every time an element is rendered, it gets its own startDelay value
+ * that ensures it appears after the previous one finishes typing.
  */
 let cumulativeDelay = 0
 const nextDelay = (duration: number, elementType: keyof typeof PAUSES = "p") => {
@@ -43,12 +46,18 @@ const nextDelay = (duration: number, elementType: keyof typeof PAUSES = "p") => 
    return delay
 }
 
+/**
+ * Computes how long a block of text takes to type,
+ * given speed in ms per character.
+ */
 const typingDuration = (text: string, speed: number) => {
-   return Math.max(80, (text?.length || 0) * speed)
+   return Math.max(80, (text?.length || 0) * speed) // Ensures there’s always a minimum delay, even for short strings
 }
 
-// Recursively extract and collects all text in a React node,
-// including nested <a> links or other elements.
+/**
+ * Recursively walks through the MDX React node tree and extracts all text inside it,
+ * flattening links or nested tags or other elements.
+ */
 const extractFullText = (children: any): string => {
    if (!children) return ""
    if (typeof children === "string" || typeof children === "number") return String(children)
@@ -151,6 +160,7 @@ export const components: MDXComponents = {
       )
    },
 
+   // Horizontal dividers
    hr: (props: any) => {
       const startDelay = nextDelay(160)
       return (

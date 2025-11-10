@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from "react"
+import React, { useMemo, useState, useEffect, useRef } from "react"
 
 interface ITypingTextProps {
    /** Text to type out; if not provided, children will be used */
@@ -35,7 +35,9 @@ export function TypingText({
    className,
 }: ITypingTextProps): React.JSX.Element {
    // Build a characters map with its JSX elements
-   const { chars, totalLength } = useMemo(() => {
+   //
+   // If `text` and `children` values don’t change, the computation is not repeated
+   const { chars, totalLength, fullText } = useMemo(() => {
       if (text) {
          return {
             chars: text.split("").map((char) => ({ char, element: null })), // Stores each character with a reference to its parent element (if any)
@@ -85,84 +87,121 @@ export function TypingText({
       return {
          chars: charArray,
          totalLength: charArray.length,
+         fullText: charArray.map((c) => c.char).join(""),
       }
    }, [text, children])
 
    const [index, setIndex] = useState(0)
    const [started, setStarted] = useState(false)
 
+   /**
+    * Effects
+    */
+   const intervalRef = useRef<number | null>(null)
    useEffect(() => {
+      // Skip everything if there's nothing to write
       if (totalLength === 0) return
 
+      // Reset
       setIndex(0)
-      setStarted(false)
-      let intervalId: number | null = null
 
+      // Type multiple characters per interval tick to reduce re-render frequency.
+      // Improves performance without changing perceived speed.
+      const step = 3
+
+      // Delay before typing starts
       const startTimer = window.setTimeout(() => {
          setStarted(true)
-         intervalId = window.setInterval(() => {
+
+         // Store the interval ID inside a ref so it persists across renders
+         // and isn't lost between re-renders (unlike a local variable).
+         intervalRef.current = window.setInterval(() => {
+            // Stop typing once all characters are visible
             setIndex((i) => {
                if (i >= totalLength) {
-                  if (intervalId) window.clearInterval(intervalId)
+                  // If an interval is still active, clear it and reset the ref
+                  if (intervalRef.current) {
+                     clearInterval(intervalRef.current)
+                     intervalRef.current = null // Ensure ref doesn't hold stale ID
+                  }
                   return i
                }
-               return i + 1
+
+               // Otherwise, advance the typing index by "step" characters
+               return Math.min(i + step, totalLength)
             })
-         }, speed)
+         }, speed * step) // Multiply speed by step to preserve same visual timing
       }, startDelay)
 
       return () => {
-         window.clearTimeout(startTimer)
-         if (intervalId) window.clearInterval(intervalId)
+         clearTimeout(startTimer) // Always clear the delay timer
+
+         // If an interval is still active, clear it and reset the ref
+         if (intervalRef.current !== null) {
+            clearInterval(intervalRef.current)
+            intervalRef.current = null // Ensure ref doesn't hold stale ID
+         }
       }
    }, [totalLength, speed, startDelay])
 
    // Re-build content by grouping consecutive characters by the same element
-   const renderContent = () => {
+   const rendered = useMemo(() => {
+      // If no characters, show nothing
       if (chars.length === 0) return null
 
+      // Get only the visible part
       const visibleChars = chars.slice(0, index)
       const result: React.ReactNode[] = []
+
+      // Track the current "group" of consecutive characters
       let currentElement: React.ReactElement | null = null
       let currentText = ""
 
-      visibleChars.forEach((item, idx) => {
+      // Merges consecutive characters with the same element reference into one string
+      // For instance, "World" (all from the same <strong>) will become one
+      // <strong>World</strong> node instead of five <strong>W</strong>, <strong>o</strong>, etc.
+      for (let i = 0; i < visibleChars.length; i++) {
+         const item = visibleChars[i]
+
+         // If same element as previous char, just append the character
          if (item.element === currentElement) {
-            // Same element, accumulate text
             currentText += item.char
          } else {
-            // Different element, save the save the previous one
+            // When the element changes (e.g. from plain text to <strong>),
+            // flush the accumulated text as a React node.
             if (currentText) {
-               if (currentElement) {
-                  result.push(React.cloneElement(currentElement, { key: result.length }, currentText))
-               } else {
-                  result.push(currentText)
-               }
+               result.push(
+                  currentElement
+                     ? React.cloneElement(
+                          currentElement,
+                          { key: result.length }, // Unique key for React diffing
+                          currentText, // New "visible text" for this element
+                       )
+                     : currentText,
+               )
             }
-            // Start new group
+
+            // Start a new group for the next element
             currentElement = item.element
             currentText = item.char
          }
+      }
 
-         // Last character
-         if (idx === visibleChars.length - 1 && currentText) {
-            if (currentElement) {
-               result.push(React.cloneElement(currentElement, { key: result.length }, currentText))
-            } else {
-               result.push(currentText)
-            }
-         }
-      })
+      // After the loop, this flushes the final pending group that wasn’t emitted inside the loop
+      if (currentText) {
+         result.push(
+            currentElement ? React.cloneElement(currentElement, { key: result.length }, currentText) : currentText,
+         )
+      }
 
       return result
-   }
+   }, [chars, index])
 
    const done = index >= totalLength
-   const fullText = chars.map((c) => c.char).join("")
 
    return (
       <span className={className} aria-label={fullText}>
-         {renderContent()}
+         {rendered}
          {cursor && started && !done && (
             <span
                aria-hidden
