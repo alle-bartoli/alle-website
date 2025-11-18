@@ -101,7 +101,7 @@ export const metadata: Metadata = {
    creator: "Alessandro Bartoli",
    openGraph: {
       type: "website",
-      locale: "en_US",
+      locale: "it_IT",
       siteName: "Alessandro Bartoli personal website",
       url,
       //images: [
@@ -112,6 +112,10 @@ export const metadata: Metadata = {
       // alt: "Alessandro Bartoli",
       // },
       //],
+   },
+   icons: {
+      icon: "/favicon.ico",
+      apple: "/apple-touch-icon.png",
    },
 }
 
