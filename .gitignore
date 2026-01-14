@@ -4,16 +4,11 @@ node_modules/
 # Environment
 .env.*
 
-# NextJS
-.next/
-out/
+# Vite
+dist/
 
 # Macos/AppleSilicon
 .DS_Store
 
-# out
-.vercel
-
-# Open NEXT
-.open-next
-
+# AI
+.mcp.json

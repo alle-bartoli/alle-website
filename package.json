@@ -1,37 +1,36 @@
 {
    "name": "alle-website",
-   "version": "1.0.1",
+   "version": "2.0.0",
    "private": true,
+   "type": "module",
    "scripts": {
-      "dev": "next dev",
-      "start": "next start",
-      "lint": "next lint",
-      "build": "next build"
+      "dev": "vite",
+      "build": "vite build",
+      "preview": "vite preview",
+      "lint": "eslint ."
    },
    "dependencies": {
-      "@mdx-js/loader": "^3.1.1",
-      "@mdx-js/react": "^3.1.1",
-      "@next/mdx": "^16.0.1",
-      "@types/mdx": "^2.0.13",
-      "next": "16.0.1",
+      "@fontsource-variable/jetbrains-mono": "^5.1.1",
+      "@mdx-js/react": "^3.1.0",
       "react": "^19.2.0",
       "react-dom": "^19.2.0"
    },
    "devDependencies": {
-      "@cloudflare/next-on-pages": "^1.13.16",
-      "@svgr/webpack": "^8.1.0",
-      "@tailwindcss/postcss": "^4.1.16",
-      "@tailwindcss/typography": "^0.5.19",
-      "@types/node": "^24.10.0",
-      "@types/react": "^19.2.2",
-      "@types/react-dom": "^19.2.2",
+      "@mdx-js/rollup": "^3.1.0",
+      "@tailwindcss/typography": "^0.5.15",
+      "@tailwindcss/vite": "^4.1.0",
+      "@types/mdx": "^2.0.13",
+      "@types/node": "^22.19.6",
+      "@types/react": "^19.0.0",
+      "@types/react-dom": "^19.0.0",
+      "@vitejs/plugin-react": "^4.3.0",
       "eslint": "^9.39.1",
-      "eslint-config-next": "16.0.1",
-      "postcss": "^8.5.6",
       "prettier": "^3.6.2",
-      "tailwindcss": "^4.1.16",
-      "typescript": "^5.9.3",
-      "url-loader": "^4.1.1",
+      "tailwindcss": "^4.1.18",
+      "typescript": "^5.7.0",
+      "vike": "^0.4.252",
+      "vike-react": "^0.6.18",
+      "vite": "^6.0.0",
       "wrangler": "^4.46.0"
    }
 }

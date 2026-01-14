@@ -2,27 +2,31 @@
 
 ## Description
 
-My personal portfolio built in [NextJS](https://nextjs.org/) ⚡.
+My personal portfolio built with [Vite](https://vitejs.dev/) + [Vike](https://vike.dev/).
 
 ## Getting Started
 
-First, run the development server:
+Requires **Node.js 22+**
 
 ```bash
+# Install dependencies
+pnpm install
+
+# Development server
 pnpm dev
+
+# Production build
+pnpm build
+
+# Preview production build
+pnpm preview
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:5173](http://localhost:5173) to see the result.
 
-You can start editing the page by modifying `app/page.mdx`. The page auto-updates as you edit the file.
+## Deploy
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load `JetBrains_Mono` Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Build output: `dist/client/`
+- Settings:
+   - Build command: `pnpm build`
+   - Output directory: `dist/client`

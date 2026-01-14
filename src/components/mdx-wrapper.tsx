@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react"
 import { MDXComponents } from "mdx/types"
 import { TypingText } from "@/components/typing-text"
-import { cn } from "@/utils"
+import { cn } from "@/lib/utils"
 
 const PAUSES = {
    h1: 100,
@@ -14,8 +14,7 @@ const PAUSES = {
 
 /*
  * Sequential timing.
- * Ensures elements appear sequentially,
- * respecting startDelay per element
+ * Ensures elements appear sequentially, respecting startDelay per element.
  */
 function DelayedReveal({
    startDelay,

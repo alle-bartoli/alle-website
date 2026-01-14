@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@plugin '@tailwindcss/typography';
+@plugin "@tailwindcss/typography";
 
 :root {
    --foreground-rgb: 0, 0, 0;
@@ -7,7 +7,6 @@
    --background-end-rgb: 255, 255, 255;
 }
 
-/* Disable dark mode support */
 @media (prefers-color-scheme: dark) {
    :root {
       --foreground-rgb: 255, 255, 255;
@@ -25,5 +24,16 @@
 
    .prose-invert ul > li {
       cursor: pointer;
+   }
+}
+
+/* Typing cursor animation */
+@keyframes typing-blink {
+   0%,
+   100% {
+      opacity: 1;
+   }
+   50% {
+      opacity: 0;
    }
 }
