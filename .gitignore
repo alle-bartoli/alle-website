@@ -4,11 +4,8 @@ node_modules/
 # Environment
 .env.*
 
-# Vite
+# Build artifact
 dist/
 
 # Macos/AppleSilicon
 .DS_Store
-
-# AI
-.mcp.json
